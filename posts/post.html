@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Artificial Intelligence and Morality">
+    <meta name="author" content="">
+
+    <title>Morality and Artificial Intelligence</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Theme CSS -->
+    <link href="../css/clean-blog.min.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle">
+                    <span class="sr-only">Toggle navigation</span>
+                    Menu <i class="fa fa-bars"></i>
+                </button>
+                <a class="navbar-brand" href="../index.html">Head Home</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="../index.html">Home</a>
+                    </li>
+                    <li>
+                        <a href="../about.html">About</a>
+                    </li>
+                    <li>
+                        <a href="../post.html">Sample Post</a>
+                    </li>
+                    <li>
+                        <a href="../contact.html">Contact</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+    <!-- Page Header -->
+    <!-- Set your background image for this header on the line below. -->
+    <header class="intro-header" style="background-image: url('../img/Nietzsche.jpg')">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <div class="post-heading">
+                        <h1>Artificial Intelligence and Morality</h1>
+                        <h2 class="subheading">A Theoretical Proposal for Machine Learning Based Morality</h2>
+                        <span class="meta">Posted May 29th, 2017</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Post Content -->
+    <article>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <p>One of the most interesting intersections of disparate academic topics that has forced itself into the modern limelight is that between morality and artificial intelligence. While composed of two highly abstract fields of study, this intersection has very real repercussions. Take, for example the advent of driverless cars. </p>
+
+                    <p>The scenario <i>will</i> arise when a car has to choose between the life of its passenger and the life of a pedestrian. This is eerily akin to the Trolley Car problem introduced by the philosopher Phillipa Foot in 1967 (see links section for more info). There are many approaches to solving this problem, some of which are being actively pursued. What I aim to do in this essay is outline some of these approaches and then propose the theoretical framework for a new form of machine learning based morality.</p>
+
+                    <h2 class="section-heading">Rule Based Morality</h2>
+
+                    <p>The first approach that we are going to look at is a rule based approach. This is the same as saying "if A occurs, do B". Moral decisions tend to carry more complexity to them, though. We would have to model them as "If A and B and C and D ... and Y then Z". Computer scientists model complex conditional relationships like this with decision trees. Each different condition is represented as a different branch going down the tree. Eventually, you will reach the bottom of the tree where a solution is hard coded.</p>
+
+                <img class="img-responsive" src="../img/decision_tree.png">
+                <span class="caption text-muted">
+                    An example of a decision tree determining wether someone will go outside based on the weather.
+                </span>
+
+                <p>The issue with rule based morality is immediately apparent. In fact, over 400 years ago Immanuel Kant explained why we can't hard code in the optimal moral decision for any possible situation:
+                <blockquote>
+                    There couldn’t be an imperative
+                    that in the strict sense commanded us to do what makes for
+                    happiness, because happiness is an ideal not of reason but
+                    of imagination, depending only on empirical grounds. This
+                    means that whether a person will achieve happiness depends
+                    on countlessly many particular facts about his future states;
+                    and there is absolutely no chance of picking out the actions
+                    that will produce the right infinite totality of consequences
+                    that will constitute happiness.
+                </blockquote>
+                </p>
+
+                <p>Attempting to hard code the optimal outcome to every situation would require an infinitely long decision tree. You could generalize decisions to address this issue (i.e. only account for the major variables involved in a moral decision); however, there would still inevitably arise situations totally outside the realm of any within the decision tree. Think, for example of the moral dilemmas arising at the advent of new technologies.</p>
+
+                <h2 class="section-heading">Reinforcement Learning</h2>
+
+                    <p>The second approach that we are going to look into is called reinforcement learning. In this method, an artificial intelligence interacts with a given scenario multiple times, experimenting with different potential paths each time. This is similar to trying to beat a video game by trying different things, dying, and playing the level again by trying something different. </p>
+
+                    <p>If you're playing a video game, it would take you a prohibitively long time to continually make random moves until your random sequence of moves allows you to beat the level. Instead, you store a knowledge of which past moves got you the closest to beating the level in the past. You will then tend toward those moves while also exploring new possibilities to see if those increase your score even more. This is what's known as the explore-exploit tradeoff. GoodAI, a Czech AI startup, has built a Q-learning model that performs this exact type of learning in user prescribed situations.</p>
+
+                    <p> One of the major issues with this approach, however, is a lack of generalizability. The moral skillset developed in the reinforcement learning approach is confined to the specific scenarios in which the AI was trained. This is the difference between (a) learning the moves to beat a single level of a video game and (b) learning how to play a video game. If a number of variables are changed in a moral situation, will you be able to account for those or will your moral reasoning need to restart from scratch?
+                    </p>
+
+                <h2 class="section-heading">Transfer Learning</h2>
+
+                    <p>
+                    Enter transfer learning. In traditional machine learning, a we train a model that will then be used to make predictions on datasets of the same form. If we feed the model data of a new type, the model will sputter to a stop. Imagine trying to run a car by filling up the gas tank with green tea. Transfer learning addresses the problem of differing input, which is integral to addressing the diversity inherent to moral quagmires.
+                    </p>
+
+                <img class="img-responsive" src="../img/traditional_ml_setup.png" alt="">
+                <br>
+                <img class="img-responsive" src="../img/transfer_learning_setup.png">
+                <span class="caption text-muted">
+                        In a traditional supervised learning problem, two different models are required to produce predictions for data coming from two different domains. In transfer learning, the knowledge gained from one model can be used as a stepping stone for making predictions in a new domain.
+                </span>
+
+                    <p>So what would transfer learning look like in a moral context? I propose beginning with a binary classifier (e.g. a Support Vector Machine, Logistic Regression, or Neural Net). This classifier will take as input a specific scenario in which a moral dilemma exists and n possible choices are present. The classifier would then calculate the "moral score" of each of the n possible choices, landing on the choice with the maximum moral score.</p>
+
+                    <p>If this binary classifier were fed into a transfer learning context, the model would have the flexibility to address different types of situations which a pre-existing knowledge of morality. </p>
+
+                    <p>One major question pertaining to this, though, is how do we program moral scores? The simplest computational method would be a bounded utilitarian model. By this I mean a model that acts to maximize the common good within bounds. An example of an established bound would be: an AI cannot kill people. These boundaries would need to be domain specific as agricultural ethics have emphatically different ethical boundaries than, say, autonomous vehicles. This is the central tenet of situational ethics.</p>
+
+                    <h2 class="section-heading">The Framework of Computational Ethics</h2>
+
+                    <p>
+                        In Beyond Good and Evil, Nietzsche opined:
+
+                        <blockquote>
+                            There are absolutely no moral phenomena, only a moral interpretation of the phenomena.
+                        </blockquote>
+                    At the time, Nietzsche was countering moral essentialism, the belief that there exists an inherent morality in the universe. This claim was psychological more than philosophical. Nietzsche was trying to represent morality as a subjective experience. When building morality into artificial intelligence, though, we are working in a framework totally independent of subjective experience.
+                    </p>
+
+                    <p>
+                    Whether you are a Christian Essentialist or Existentialist, you would agree that computational ethics are not hard coded by nature or a deity. Nor are they established via the subjective experience of the computer. That would be  impossible as computers have no qualia. Instead, computational morality is built by training, repition and guess work. Maybe morality is neither inherent nor interpretive, but a skill developed through trial and lots and lots of error.
+                    </p>
+
+                    <p>
+                    <b> Links </b><br>
+                    <ul>
+                        <li> A Video on the <a href ="https://www.youtube.com/watch?v=yg16u_bzjPE"> Trolley Car Problem </a></li>
+                        <li> Immanuel Kant's <a href="http://www.earlymoderntexts.com/assets/pdfs/kant1785.pdf"> Fundamental Principals of the Metaphysics of Morals </a></li>
+                        <li> GoodAI's <a href="https://www.goodai.com/brain-simulator">
+                            Brain Simulator </a></li>
+                        <li> An Introduction to  <a href="http://sebastianruder.com/transfer-learning/">
+                            Transfer Learning</a></li>
+                        <li> Friedrich Nietzsche's <a href="http://www.holybooks.com/wp-content/uploads/Nietzsche-Beyond-Good-and-Evil.pdf">Beyond Good and Evil<a>
+                        </li>
+                        <li> 1843 Magazine's <a href="https://www.1843magazine.com/features/teaching-robots-right-from-wrong"> Teaching Robots Right from Wrong </a></li>
+                    </ul>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </article>
+
+    <hr>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <ul class="list-inline text-center">
+                        <li>
+                            <a href="#">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                    </ul>
+                    <p class="copyright text-muted">Copyright &copy; Your Website 2016</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- jQuery -->
+    <script src="../vendor/jquery/jquery.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- Contact Form JavaScript -->
+    <script src="../js/jqBootstrapValidation.js"></script>
+    <script src="../js/contact_me.js"></script>
+
+    <!-- Theme JavaScript -->
+    <script src="../js/clean-blog.min.js"></script>
+
+</body>
+
+</html>
