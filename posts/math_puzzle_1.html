@@ -102,24 +102,27 @@
                     You may notice that my starting position in the code is HHHHHHHHTH. This is 2 moves from (and to) the original state of the coins. I simply flipped the two adjacent pairs of Tails in locations (1,2) and (4,5), assuming 0 indexing.
                     </span>
 
-                    <p> Since there are 2**10 = 1024 unique states of the coins and we flipped coins 1,000,000 times, the probability of us not getting a possible state is incredibly low. To verify this, I set the To verify this, I set the the end_state to TTHTTTTTTT. This is a state I know is achievable (I'll challenge you to solve that if you don't believe me). This produced success 20% of the time. From this, we can infer that the probability of success within 100 moves for an arbitrary state is roughly 20% (very roughly). If the probability of any single trial's success is 0.2, then the probability of no trial out of 10,000 succeeding is effectively 0. In fact, with the amount of decimal places that Python computes to, the output of 0.8**10,000 <i>is</i> 0. </p>
+                    <p> Since there are 2**10 = 1024 unique states of the coins and we flipped coins 1,000,000 times, the probability of us not getting a possible state is incredibly low. To verify this, I set the the end_state to TTHTTTTTTT. This is a state I know is achievable (I'll challenge you to solve that if you don't believe me). This produced success 20% of the time. From this, we can infer that the probability of success within 100 moves for an arbitrary state is roughly 20%. If the probability of any single trial's success is around 0.2, then the probability of no trial out of 10,000 succeeding is effectively 0. In fact, with the amount of decimal places that Python computes to, the output of 0.8**10,000 <i>is</i> 0. </p>
 
                     <h2 class="section-heading">But Why?</h2>
                     <p> It turns out we can prove that getting to HHHHHHHHHH from  HTTHTTHHTH is impossible. Let <b>x</b> be the number of heads in our original coin configuration (HTTHTTHHTH) and let <b>y</b> be the number of tails. Since x = y = 5, we know:
                         <ul>
                             <li> x % 2 = 1 </li>
                             <li> y % 2 = 1</li>
-                        </ul>
-                        If we want to flip two adjacent coins we have 4 possibilities for doing this:
+                        </ul> Imagine we have a mapping, &phi;(x,y) that tells us what x and y will be after we flip the a pair of adjacent coins. If we want to flip two adjacent coins we have 4 possibilities for doing this:
                         <ol>
-                            <li><b>HH &rarr; TT</b> (x &rarr; x - 2, y &rarr; y + 2) </li>
-                            <li><b>TT &rarr; HH</b> (x &rarr; x + 2, y &rarr; y - 2)</li>
-                            <li><b>HT &rarr; TH</b> (x &rarr; x, y &rarr; y)</li>
-                            <li><b>TH &rarr; HT</b> (x &rarr; x, y &rarr; y)</li>
+                            <li><b>HH &rarr; TT</b>
+                                ( &phi;(x, y) = x - 2, y + 2 ) </li>
+                            <li><b>TT &rarr; HH</b>
+                                ( &phi;(x, y) = x + 2, y - 2 )</li>
+                            <li><b>HT &rarr; TH</b>
+                                ( &phi;(x, y) = x, y )</li>
+                            <li><b>TH &rarr; HT</b>
+                                ( &phi;(x, y) = x, y )</li>
                         </ol>
-                        Based on these, we know there does not exist any mapping, &phi;, such that
-                        <center>&phi;(x) % 2 != 1.</center>
-                        In other words, x is stuck being an odd number and so is y. In order for us to get to the state HHHHHHHHHH, we would have to have a mapping from an odd value of x to an even value. Q.E.D.
+                        Based on this, if we have a mapping, &phi;,
+                        <center>&forall;&phi;, &phi;(x,y) mod (2,2) = 1,1.</center>
+                        In other words, x is stuck being an odd number and so is y. In order for us to get to the state HHHHHHHHHH, we would have to have a mapping from an odd value of x to an even value. Thus, this final state is impossible to achieve. Q.E.D.
                     </p>
 
                 </div>
