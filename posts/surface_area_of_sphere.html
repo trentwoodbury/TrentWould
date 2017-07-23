@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Finding the Surface Area of a Sphere">
+    <meta name="author" content="">
+
+    <title>Finding the Surface Area of a Sphere</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Theme CSS -->
+    <link href="../css/clean-blog.min.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle">
+                    <span class="sr-only">Toggle navigation</span>
+                    Menu <i class="fa fa-bars"></i>
+                </button>
+                <a class="navbar-brand" href="../index.html">Go Home</a>
+                <a class="navbar-brand" href="../about.html">About</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <!-- <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="../index.html">Home</a>
+                    </li>
+                    <li>
+                        <a href="../about.html">About</a>
+                    </li>
+                </ul>
+            </div> -->
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+    <!-- Page Header -->
+    <!-- Set your background image for this header on the line below. -->
+    <header class="intro-header" style="background-image: url('../img/geo_dome.jpg')">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <div class="post-heading">
+                        <h1>Calculating the Surface Area of A Sphere</h1>
+                        <h2 class="subheading">Using Local Bijections
+                        to Integrate Over Surfaces</h2>
+                        <span class="meta">Posted July 23rd, 2017</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Post Content -->
+    <article>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <p></p>
+
+
+                    <h2 class="section-heading">Getting Started</h2>
+
+                    <p>In this post we are going to integrate over sets of infintismal sections of <img src='../img/latex/R2.png'></img> to calculate the surface area of a sphere. To do this, though, we first need to become acquainted with the following concepts:</p>
+                    <ul>
+                        <li> Manifolds </li>
+                        <li> Neighborhoods </li>
+                        <li> Topological Space </li>
+                        <li> Homeomorphisms </li>
+                    </ul>
+
+                    <p> This may seem like a lot, but we will actually be able to get through all of these ideas fairly quickly. Furthermore, all of these ideas are heavily interrelated.</p>
+
+                    <p>
+                        The level of mathmatical knowledge necessary for this article to be a fun read is a working familiarity with  calculus and at least some proof based math (e.g. linear algebra or abstract algebra).
+                    </p>
+
+                    <h2 class="section-heading">Manifolds</h2>
+                    <p>Let's start with manifolds. Manifolds are a fundamental building block of topology and differential geometry. So what is a manifold? </p>
+
+                    <p><b>Definition: Manifold</b>
+                        <blockquote>
+                            A Manifold is a topological space, M, where at each point, <img src='../img/latex/x_in_m.png'></img>, a neighborhood around x that is homeomorphic to <img src='../img/latex/Rn.png'></img>
+                        </blockquote>
+
+                    No worries if this definition made no sense to you. If you aren't familiar with topology, we need to define a <b>Neighborhood</b>, a <b>Topological Space</b> and a <b>Homeomorphism</b> before the definition of a manifold can become meaningful. I wanted to define a manifold first was so that we have an end goal in mind when we learn about the components of the definition of a manifold. This will also allow us to go full circle.
+                    </p>
+
+                    <p>Let's start with <b>Neighborhoods</b>. When we talk about a neighborhood, we are actually talking about a neighborhood about a point, x. This is because the definition of a neighborhood is relative to some point, x.
+                        <br><br><b>Definition: Neighborhood</b>
+                        <blockquote>
+                            Suppose we have a point, x, in topological space. N is a Neighborhood of x if
+                            <ol>
+                                <li><img src='../img/latex/x_in_m.png'></img>
+                                </li>
+                                <li><img src='../img/latex/exists_u.png'></img>
+                            , an open set containing x such that
+                            <img src='../img/latex/u_subset_n.png'></img>
+                        </blockquote>
+                        Keep in mind that N needn't be an open set. For example, if N is in <img src='../img/latex/R2.png'></img> and it is defined as points in [-1,1] along the x-axis and points in [-1,1] along the y-axis then there are infinitely many open sets about the point x=(0,0) in N, but N is still a closed set. N could also be an open set, though. For example, if we're still in <img src='../img/latex/R2.png'></img>, if our point is x=(0,0) and N is the set of points spanning (-1,1) in the x-axis and (-1,1) in the y-axis.
+                    </p>
+
+                    <p> Not familiar with open sets? <a href='https://en.wikipedia.org/wiki/Open_set'>Click here.</a>
+                    </p>
+
+                    <center><img src='../img/neighborhood_about_p.png'></img>
+                    <span class='caption text-muted'> A neighborhood, V, about a point p. Note that my notation in this post will use N for the neighborhood and x for the point.</span></center>
+
+                    <p>We mentioned in the definition of a Neighborhood that the point x is in a topological space but we haven't defined a topological space yet. So let's do that next.
+                    <p>
+
+                    <p><b>Definition: Topological Space</b>
+                    <blockquote>
+                     Suppose we have a space, X, with a function N(x) that maps each point <img src='../img/latex/x_in_x.png'></img> to the set of Neighborhoods associated with x. In other words,
+                     <img src='../img/latex/n_of_x.png'></img>. X is a Topological Space if it satisfies the following conditions:
+                     <ol>
+                         <li><img src='../img/latex/top_space_1.png'></img></li>
+                         <li><img src='../img/latex/top_space_2.png'></img></li>
+                         <li><img src='../img/latex/top_space_3.png'></img> N is a neighborhood of x</li>
+                         <li> For any <img src='../img/latex/top_space_4.png'></img> is a neighborhood of x</li>
+                         <li><img src='../img/latex/top_space_5.png'></img> is a neighborhood of y.</li>
+                    </ol>
+                </blockquote>
+                </p>
+
+                <p>Because that definition of topological spaces is brutally technical, a very simple way of conceptualizing a topological space is a set of points with neighborhoods that act nicely with each other.
+                </p>
+
+                <p>Finally we are on to homeomorphisms. Homeomorphisms are built upon the concept of isomorphisms. If you aren't familiar with isomorphisms then briefly skim <a href='https://en.wikipedia.org/wiki/Bijection,_injection_and_surjection'> this article</a> and then <a href='https://math.stackexchange.com/questions/441758/what-does-isomorphic-mean-in-linear-algebra'> this stack exchange post</a>.</p>
+
+                <p><b>Definition: Neighborhood</b>
+                    <blockquote>
+                        A Neighborhood is a isomorphism between topological spaces.
+                    </blockquote>
+
+                Any manifolds will be homeomorphic if we can continuously mold one into the other. A way of thinking about this is if one manifold were made out of silly putty, can you reshape that silly putty to make another manifold? If you can, those manifolds are homeomorphic.
+                </p>
+
+                <center>
+                <img class="img-responsive" src="../img/surface_integral.png">
+                <span class="caption text-muted">
+                    An example of a homeomorphism between a manifold, S and a region, D, in <img src='../img/latex/R2.png'></img>. D itself is a manifold as well.
+                </span>
+                </center
+
+                <p> Now we have all the theory necessary to understand a manifold and homeomorphisms. Let's use this knowledge to calculate the surface of a sphere.
+
+                <h2 class="section-heading">Calculating the Surface Area of a Sphere</h2>
+
+                    <p> Let's start with the general approach we're going to take here. We are going to break the unit sphere into infintismal sections, dxdy, and then map these sections  to <img src='../img/latex/R2.png'></img>. We will then define a bijection between dxdy and our region in <img src='../img/latex/R2.png'></img>. We can use this bijection to determine how we are going to integrate over the sphere. </p>
+
+                    <p>If you look at the figure of a homeomorphism in the section above, you can think of the surface S as the unit sphere. dxdy is the region that is being mapped to D. D is the region of <img src='../img/latex/R2.png'></img> that we are mapping to. All we need to do is account for how much the sides of that section are being stretched during this mapping. If we apply that stretch factor to the limits of our integrals as we integrate over the region, we will be able to calculate the surface area over our manifold (the unit sphere in this case)
+                    </p>
+
+                    <p>We know that surface area of the unit sphere, <img src='../img/latex/sphere_area.png'></img>. This means that if we were to take the surface area of the top half of a a sphere, it would be <img src='../img/latex/two_pi_r.png'></img>. Since the sphere is symmetric across the plane (x, y, z=0), proving that the top half of a sphere equals <img src='../img/latex/two_pi_r.png'></img> gives us that the area of the full sphere is <img src='../img/latex/sphere_area.png'></img>.
+                    </p>
+
+                    <p>Let's define a mapping, <img src='../img/latex/phi.png'></img>, from dxdy in  <img src='../img/latex/R2.png'> to a corresponding region on the surface of the unit sphere.<br>
+                        <img src='../img/latex/dxdy_map.png'></img>
+                    <br><br>
+                    We know that this mapping, <img src='../img/latex/phi.png'></img> is a homeomorphism. We also know <img src='../img/latex/alpha_is_beta.png'></img>. This is because the curvature of a sphere is constant across all directions. That nice fact allows us to break this problem down into just the x axis. Then we we bring the y axis back in, we know that we will be applying the exact same transformation. So let's solve for alpha.
+                </p>
+
+                <p> It's interesting to note how much we've simplified this problem at this point: We've moved to the x-axis of half of our original sphere. We've also moved to a far simpler problem: how do we calculate the length of the arc of the top half of a unit circle by mapping from the line [-1, 1]? Once we have that, we can introduce this mapping back into the y-axis as well to go from an arc length to a surface area. By the way, the reason we are dealing with the line [-1, 1] in <b>R</b> is because -1 and 1 are the end points of the top half of a unit circle.
+                </p>
+                <p> The formula for a cirlce is <img src='../img/latex/circle_proofs.png'></img>. So now we have y in terms of x and we know what the change in y will be as we move along the x. These are useful because for every dx step we take in <b>R</b> we are going to be taking a step along the arc of a circle.
+                </p>
+                <p> If we want to integrate along dx in <b>R</b> the formula is simply <img src='../img/latex/integral_trivial.png'></img>. What about the top half of the unit circle though? For this, we need to map from line length to an arc length. The formula for an arc length of some function f(x) is given by <img src='../img/latex/arc_length.png'></img>. Using this knowledge we can solve for alpha: <br>
+                    <center><img src='../img/latex/arc_length_circle.png'></img></center>
+                    <br>
+                    Since we know that <img src='../img/latex/alpha_is_beta.png'></img>,  it follows that:
+                    <center><img src='../img/latex/beta_soln.png'></img></center>
+                </p>
+
+                <p>Now that we have alpha, we can solve for the length of the top half of a circle: <br>
+                    <img src='../img/latex/circle_top_half_length.png'></img>
+                    <br>
+                Let's multiply this by 2, so that we have the entire length of the circle in the along the x-axis. This gives us <img src='../img/latex/two_pi.png'></img>
+                </p>
+
+                <p> Let's now go back into <img src='../img/latex/R2.png'></img> and include the y axis, so that we are calculating surface area instead of arc length. Keep in mind, though, that calculating surface area is simply calculating the arc length in the x and then calculating the arc length in the y and multiplying these two values together.
+                    <center><img src='../img/latex/final_proof.png'></img> </center>
+                    <br>
+                We are multiplying each integral by 2 so that we convert the length of the top half of the circle to the full length of the circle in each direction. <b>QED.</b>
+
+
+                    <p>
+                    <b> Links </b><br>
+                    <ul>
+                        <li><a href='https://en.wikipedia.org/wiki/Open_set'>  Wiki on Open Sets  </a> </li>
+                        <li><a href='https://en.wikipedia.org/wiki/Bijection,_injection_and_surjection'> Wiki on Bijection </a></li>
+                        <li><a href='https://math.stackexchange.com/questions/441758/what-does-isomorphic-mean-in-linear-algebra'> Stack Exchange Post on Isomorphisms</a></li>
+                    </ul>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </article>
+
+    <hr>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <ul class="list-inline text-center">
+                        <li>
+                            <a href="https://twitter.com/TrentWould">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.facebook.com/TrentWould">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://github.com/trentwoodbury">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                    </ul>
+                    <p class="copyright text-muted">Copyright &copy; Trent Woodbury 2017</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- jQuery -->
+    <script src="../vendor/jquery/jquery.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- Contact Form JavaScript -->
+    <script src="../js/jqBootstrapValidation.js"></script>
+    <script src="../js/contact_me.js"></script>
+
+    <!-- Theme JavaScript -->
+    <script src="../js/clean-blog.min.js"></script>
+
+</body>
+
+</html>
