@@ -156,9 +156,9 @@
 
                 <p>Finally we are on to homeomorphisms. Homeomorphisms are built upon the concept of isomorphisms. If you aren't familiar with isomorphisms then briefly skim <a href='https://en.wikipedia.org/wiki/Bijection,_injection_and_surjection'> this article</a> and then <a href='https://math.stackexchange.com/questions/441758/what-does-isomorphic-mean-in-linear-algebra'> this stack exchange post</a>.</p>
 
-                <p><b>Definition: Neighborhood</b>
+                <p><b>Definition: Homeomorphism</b>
                     <blockquote>
-                        A Neighborhood is a isomorphism between topological spaces.
+                        A Homeomorphism is a isomorphism between topological spaces.
                     </blockquote>
 
                 Any manifolds will be homeomorphic if we can continuously mold one into the other. A way of thinking about this is if one manifold were made out of silly putty, can you reshape that silly putty to make another manifold? If you can, those manifolds are homeomorphic.
@@ -175,9 +175,9 @@
 
                 <h2 class="section-heading">Calculating the Surface Area of a Sphere</h2>
 
-                    <p> Let's start with the general approach we're going to take here. We are going to break the unit sphere into infintismal sections, dxdy, and then map these sections  to <img src='../img/latex/R2.png'></img>. We will then define a bijection between dxdy and our region in <img src='../img/latex/R2.png'></img>. We can use this bijection to determine how we are going to integrate over the sphere. </p>
+                    <p> Let's start with the general approach we're going to take here. We are going to break the unit sphere into infintismal sections, dxdy, and then map these sections  to <img src='../img/latex/R2.png'></img>. We will then define a homeomorphism between dxdy and our region in <img src='../img/latex/R2.png'></img>. We can use this homeomorphism to determine how we are going to integrate over the sphere. </p>
 
-                    <p>If you look at the figure of a homeomorphism in the section above, you can think of the surface S as the unit sphere. dxdy is the region that is being mapped to D. D is the region of <img src='../img/latex/R2.png'></img> that we are mapping to. All we need to do is account for how much the sides of that section are being stretched during this mapping. If we apply that stretch factor to the limits of our integrals as we integrate over the region, we will be able to calculate the surface area over our manifold (the unit sphere in this case)
+                    <p>If you look at the figure of a homeomorphism in the section above, you can think of the surface S as the unit sphere. dxdy is the region that is being mapped to D. D is the region of <img src='../img/latex/R2.png'></img> that we are mapping to. All we need to do is account for how much the sides of that section are being stretched during this mapping. If we apply that stretch factor to dx and dy as we integrate over the region, we will be able to calculate the surface area over our manifold (the unit sphere in this case)
                     </p>
 
                     <p>We know that surface area of the unit sphere, <img src='../img/latex/sphere_area.png'></img>. This means that if we were to take the surface area of the top half of a a sphere, it would be <img src='../img/latex/two_pi_r.png'></img>. Since the sphere is symmetric across the plane (x, y, z=0), proving that the top half of a sphere equals <img src='../img/latex/two_pi_r.png'></img> gives us that the area of the full sphere is <img src='../img/latex/sphere_area.png'></img>.
